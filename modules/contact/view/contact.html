@@ -1,41 +1,68 @@
 <div class="" ng-include="'modules/common/header.html'"></div>
 <div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-2 sidenav" ng-include="'modules/common/left_bar.html'"> 
-    </div>
-    <div class="col-sm-8 text-left"> 
-      <h1>Contact Form</h1>
-      <div class="col-md-12">
-    <div class="form-area">  
-        <form role="form">
-      
-                  
-    				<div class="form-group">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+	<div class="row content">
+		<div class="col-sm-2 sidenav" ng-include="'modules/common/left_bar.html'"> 
+		</div>
+		<div class="col-sm-8 text-left"> 
+			<h1>Contact Form</h1>
+			  <div class="col-md-12" ng-include="'modules/common/message.html'" ></div>
+			<div class="col-md-12">
+				<div class="form-area">  
+					<form role="form" name="myForm" novalidate>
+						<div class="form-group">
+							<input type="text" class="form-control" id="name" name="name" ng-model="name"  placeholder="Name" required>
+							<span class="error" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+								<span ng-show="myForm.name.$error.required">Name is required.</span>
+							</span>
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control" id="email" name="email" ng-model="email" placeholder="Email Id" required>
+							<span class="error" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+								<span ng-show="myForm.email.$error.required">Email is required.</span>
+								<span ng-show="myForm.email.$error.email">Invalid email address.</span>
+							</span>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="mobile" name="mobile" ng-model="mobile" placeholder="Mobile Number" ng-minlength="10" ng-maxlength="10" required>
+							<span class="error" ng-show="myForm.mobile.$dirty && myForm.mobile.$invalid">
+								<span ng-show="myForm.mobile.$error.required">Mobile is required.</span>
+								<span class="error" 
+								ng-show="((myForm.mobile.$error.minlength ||myForm.mobile.$error.maxlength) && 
+								myForm.mobile.$dirty) ">
+								phone number should be 10 digits
+							</span>
+						</span>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+						<input type="text" class="form-control" id="subject" name="subject" ng-model="subject" placeholder="Subject" required>
+						<span class="error" ng-show="myForm.subject.$dirty && myForm.subject.$invalid">
+							<span ng-show="myForm.subject.$error.required">Subject is required.</span>
+						</span>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
-					</div>
-                    <div class="form-group">
-                    <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
-                                          
-                    </div>
-            
-        <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form</button>
-        </form>
-          <br style="clear:both">
-    </div>
-</div>
-    </div>
+						<textarea class="form-control" type="textarea" name="message" id="message" ng-model="message" placeholder="Message" ng-minlength="10" ng-maxlength="500" rows="7"></textarea>
+						<span class="error" ng-show="myForm.message.$dirty && myForm.message.$invalid">
+						<span ng-show="myForm.message.$error.required">Message is required.</span>
 
-    <div class="col-sm-2 sidenav" ng-include="'modules/common/left_bar.html'">
-    </div>
-  </div>
+						<span class="error" ng-show="myForm.message.$error.minlength"> Please enter atleast 10 characters
+  </span>
+  <span class="error" ng-show="myForm.message.$error.maxlength"> Maximum allowed characters are 500
+  </span>
+
+						
+						</span>
+
+
+
+					</div>
+					<button ng-disabled="!myForm.$valid" ng-click="contact()" type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Submit</button>
+				</form>
+				<br style="clear:both">
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-2 sidenav" ng-include="'modules/common/left_bar.html'">
+	</div>
+</div>
 </div>
 <div class="" ng-include="'modules/common/footer.html'"></div>

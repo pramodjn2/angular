@@ -45,6 +45,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 <body ng-app="myApp">
 
+  <div class="page-loading">Loading...</div>
   <div ng-view></div>
 </body>
 
@@ -74,7 +75,8 @@
     });
   });
   
-   app.controller('ContactController', function ($scope, $http) {
+  app.controller('ContactController', function ($scope, $http) {
+    $(".page-loading").addClass("hidden");
     $scope.successMessage;
     $scope.errorMessage;
     $scope.success = false;
@@ -88,9 +90,13 @@
       $scope.success = false;
       $scope.error = true;
 
+      $scope.name;
       $scope.email;
-      $scope.password;
-      var encodedString = 'email='+encodeURIComponent($scope.email)+'&password='+encodeURIComponent($scope.password);
+      $scope.mobile;
+      $scope.subject;
+      $scope.message;
+
+      var encodedString = 'name='+encodeURIComponent($scope.name)+'&email='+encodeURIComponent($scope.email)+'&mobile='+encodeURIComponent($scope.mobile)+'&subject='+encodeURIComponent($scope.subject)+'&message='+encodeURIComponent($scope.message);
       $http({
         method:'POST',
         url: 'api/contact.php',
@@ -150,6 +156,9 @@
 <style>
 .error{color:red;}
 .status{display: none;}
-
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
 </style>
 </html> 

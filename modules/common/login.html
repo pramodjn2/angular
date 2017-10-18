@@ -1,0 +1,37 @@
+<div class="" ng-include="'modules/common/header.html'"></div>
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav" ng-include="'modules/common/left_bar.html'"> 
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Login Form</h1>
+      <div class="col-md-12" ng-include="'modules/common/message.html'" ></div>
+      <div class="col-md-12">
+        <div class="form-area">  
+          <form role="form" name="myForm" novalidate>
+           <div class="form-group">
+            <input type="email" class="form-control" id="email" name="email" ng-model="email" placeholder="Email Id" required>
+            <span class="error" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+              <span ng-show="myForm.email.$error.required">Email is required.</span>
+              <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+            </span>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="password" name="password" ng-model="password" placeholder="Enter Password" autocomplete="off" ng-minlength="5" ng-maxlength="12" required>
+            <span class="error" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+              <span ng-show="myForm.password.$error.required">Password is required.</span>
+              <span class="msg" ng-show="myForm.password.$dirty && myForm.password.$error.minlength">password must contain atleast 5 charecters</span>
+              <span class="msg" ng-show="myForm.password.$dirty && myForm.password.$error.maxlength">max-length of password reached</span>
+            </span>
+          </div>
+          <button ng-disabled="!myForm.$valid" ng-click="sign_in()" type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Sign In!</button>
+        </form>
+        <br style="clear:both">
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2 sidenav" ng-include="'modules/common/left_bar.html'">
+  </div>
+</div>
+</div>
+<div class="" ng-include="'modules/common/footer.html'"></div>

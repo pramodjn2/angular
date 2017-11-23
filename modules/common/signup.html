@@ -1,0 +1,73 @@
+<div class="" ng-include="'modules/common/header.html'"></div>
+<div class="container-fluid text-center">    
+	<div class="row content">
+		<div class="col-sm-2 sidenav" ng-include="'modules/common/left_bar.html'"> 
+		</div>
+		<div class="col-sm-8 text-left"> 
+			<h1>Create your account</h1>
+			<div class="col-md-12" ng-include="'modules/common/message.html'" ></div>
+			<div class="col-md-12">
+				<div class="form-area">  
+					<form role="form" name="myForm" novalidate>
+						<div class="form-group">
+							<input type="text" class="form-control" id="fname" name="fname" ng-model="fname"  placeholder="Name" required>
+							<span class="error" ng-show="myForm.fname.$dirty && myForm.fname.$invalid">
+								<span ng-show="myForm.fname.$error.required">First name is required.</span>
+							</span>
+						</div>
+
+
+						<div class="form-group">
+							<input type="text" class="form-control" id="lname" name="lname" ng-model="lname"  placeholder="Last Name" required>
+							<span class="error" ng-show="myForm.lname.$dirty && myForm.lname.$invalid">
+								<span ng-show="myForm.lname.$error.required">Last name is required.</span>
+							</span>
+						</div>
+
+						<div class="form-group">
+							<input type="email" class="form-control" id="email" name="email" ng-model="email" placeholder="Email Id" required>
+							<span class="error" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+								<span ng-show="myForm.email.$error.required">Email is required.</span>
+								<span ng-show="myForm.email.$error.email">Invalid email id.</span>
+							</span>
+						</div>
+
+						<div class="form-group">
+							<input type="password" class="form-control" id="password" name="password" ng-model="password" placeholder="Password" ng-minlength="5" ng-maxlength="20" required>
+							<span class="error" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+								<span ng-show="myForm.password.$error.required">Password is required.</span>
+								<span class="error" 
+								ng-show="((myForm.password.$error.minlength ||myForm.password.$error.maxlength) && 
+								myForm.password.$dirty) ">
+								Password should be 5 digits
+							</span>
+						</span>
+					</div>
+
+					<div class="form-group">
+						<input type="text" class="form-control" id="mobile" name="mobile" ng-model="mobile" placeholder="Mobile Number" ng-minlength="10" ng-maxlength="12" required>
+						<span class="error" ng-show="myForm.mobile.$dirty && myForm.mobile.$invalid">
+							<span ng-show="myForm.mobile.$error.required">Mobile number is required.</span>
+							<span class="error" 
+							ng-show="((myForm.mobile.$error.minlength ||myForm.mobile.$error.maxlength) && 
+							myForm.mobile.$dirty) ">
+							Mobile number should be 10 digits
+						</span>
+					</span>
+				</div>
+
+
+				<div class="form-group">
+					<button ng-disabled="!myForm.$valid" ng-click="signup()" type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Create Account</button>
+				</div>
+
+			</form>
+			<br style="clear:both">
+		</div>
+	</div>
+</div>
+<div class="col-sm-2 sidenav" ng-include="'modules/common/left_bar.html'">
+</div>
+</div>
+</div>
+<div class="" ng-include="'modules/common/footer.html'"></div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" ng-init="checkSession()">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -13,9 +13,14 @@
         <li class="active"><a href="#!home">Home</a></li>
         <li><a href="#!about">About</a></li>
         <li><a href="#!contact">Contact</a></li>
+        <li  ng-if="sessionValue"><a href="#!users">Users</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#!login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+      <li ng-if="!sessionValue"><a href="#!signup"><span class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
+      <li ng-if="!sessionValue"><a href="#!login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li ng-if="sessionValue"><a href="javascript:;" ng-click="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+
       </ul>
     </div>
   </div>

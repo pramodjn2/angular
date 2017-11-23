@@ -5,7 +5,7 @@
 		</div>
 		<div class="col-sm-8 text-left"> 
 			<h1>Contact Form</h1>
-			  <div class="col-md-12" ng-include="'modules/common/message.html'" ></div>
+			<div class="col-md-12" ng-include="'modules/common/message.html'" ></div>
 			<div class="col-md-12">
 				<div class="form-area">  
 					<form role="form" name="myForm" novalidate>
@@ -42,18 +42,13 @@
 					<div class="form-group">
 						<textarea class="form-control" type="textarea" name="message" id="message" ng-model="message" placeholder="Message" ng-minlength="10" ng-maxlength="500" rows="7"></textarea>
 						<span class="error" ng-show="myForm.message.$dirty && myForm.message.$invalid">
-						<span ng-show="myForm.message.$error.required">Message is required.</span>
+							<span ng-show="myForm.message.$error.required">Message is required.</span>
 
-						<span class="error" ng-show="myForm.message.$error.minlength"> Please enter atleast 10 characters
-  </span>
-  <span class="error" ng-show="myForm.message.$error.maxlength"> Maximum allowed characters are 500
-  </span>
-
-						
+							<span class="error" ng-show="myForm.message.$error.minlength"> Please enter atleast 10 characters
+							</span>
+							<span class="error" ng-show="myForm.message.$error.maxlength"> Maximum allowed characters are 500
+							</span>
 						</span>
-
-
-
 					</div>
 					<button ng-disabled="!myForm.$valid" ng-click="contact()" type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Submit</button>
 				</form>

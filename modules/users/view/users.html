@@ -6,7 +6,7 @@
     <div class="col-sm-8 text-left"> 
       <h1>User List</h1>
       <hr>
-       <table class="table">
+      <table class="table">
        <thead class="thead-inverse">
          <tr>
            <td>Id</td>
@@ -15,22 +15,22 @@
            <td>Email</td>
            <td>Mobile</td>
          </tr>
-          </thead>
-  <tbody>
-          
-         <tr ng-repeat="x in users" scope="row">
-    <td>{{ x.id }}</td>
-    <td>{{ x.fname }}</td>
-    <td>{{ x.lname }}</td>
-    <td>{{ x.email }}</td>
-    <td>{{ x.mobile }}</td>
+       </thead>
+       <tbody>
 
-  </tr>
-</tbody>
-       </table>
-    </div>
-    <div class="col-sm-2 sidenav" ng-include="'modules/common/left_bar.html'">
-    </div>
+         <tr ng-repeat="x in users" scope="row">
+          <td>{{ x.id }}</td>
+          <td>{{ x.fname }}</td>
+          <td>{{ x.lname }}</td>
+          <td>{{ x.email }}</td>
+          <td>{{ x.mobile }}</td>
+        </tr>
+        <tr ng-show="!users.length" ><td colspan="5" class="alert alert-danger" >No records found</td></tr>
+      </tbody>
+    </table>
   </div>
+  <div class="col-sm-2 sidenav" ng-include="'modules/common/left_bar.html'">
+  </div>
+</div>
 </div>
 <div class="" ng-include="'modules/common/footer.html'"></div>

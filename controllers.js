@@ -1,6 +1,6 @@
-
-
-
+/**
+* Develop By : Pramod Jain
+*/
   app.controller('SignupController', function ($window,$scope, $http,myService) {
     $(".page-loading").addClass("hidden");
    

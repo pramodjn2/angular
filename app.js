@@ -1,3 +1,6 @@
+/**
+* Develop By : Pramod Jain
+*/
 var app = angular.module('myApp', ['ngRoute','ngStorage']);
   var api_url = 'http://111.118.252.147/training_session/index.php/';
   app.config(function($routeProvider) {

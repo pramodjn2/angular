@@ -32,6 +32,7 @@
   
   app.controller('LoginController', function ($scope, $http,$window,myService) {
     check_session();
+  
    $(".page-loading").addClass("hidden");
    $scope.successMessage;
    $scope.errorMessage;

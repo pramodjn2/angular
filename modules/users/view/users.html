@@ -5,7 +5,9 @@
     </div>
     <div class="col-sm-8 text-left"> 
       <h1>User List</h1>
-      <hr>
+     
+     <div><input type="text" id="Search" class="form-control" placeholder="Search" ng-model="search"></div>
+ <hr>
       <table class="table">
        <thead class="thead-inverse">
          <tr>
@@ -17,8 +19,7 @@
          </tr>
        </thead>
        <tbody>
-
-         <tr ng-repeat="x in users" scope="row">
+         <tr ng-repeat="x in users | filter:search" scope="row">
           <td>{{ x.id }}</td>
           <td>{{ x.fname }}</td>
           <td>{{ x.lname }}</td>

@@ -8,25 +8,34 @@
      
      <div><input type="text" id="Search" class="form-control" placeholder="Search" ng-model="search"></div>
  <hr>
-      <table class="table">
+      <table class="table" id="example">
        <thead class="thead-inverse">
          <tr>
            <td>Id</td>
-           <td>First name</td>
+           <!-- <td>First name</td> -->
+
+           <td ng-click="sort('fname')">First name
+<span class="glyphicon sort-icon" ng-show="sortKey=='fname'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></td>
+
+
            <td>Last name</td>
            <td>Email</td>
            <td>Mobile</td>
          </tr>
        </thead>
        <tbody>
-         <tr ng-repeat="x in users | filter:search" scope="row">
+        <tr dir-paginate="x in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:10">
+        <!--  <tr dir-paginate="x in users | filter:search" scope="row"> -->
           <td>{{ x.id }}</td>
           <td>{{ x.fname }}</td>
           <td>{{ x.lname }}</td>
           <td>{{ x.email }}</td>
           <td>{{ x.mobile }}</td>
         </tr>
-        <tr ng-show="!users.length" ><td colspan="5" class="alert alert-danger" >No records found</td></tr>
+
+        <dir-pagination-controls max-size="500" direction-links="true" boundary-links="true" >
+        </dir-pagination-controls>
+       <!--  <tr ng-show="!users.length" ><td colspan="5" class="alert alert-danger" >No records found</td></tr> -->
       </tbody>
     </table>
   </div>
@@ -37,4 +46,9 @@
   </div>
 </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    //$('#example').DataTable();
+} );
+</script>
 <div footer-directive></div>

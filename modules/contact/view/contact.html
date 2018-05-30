@@ -9,19 +9,34 @@
 			<div class="col-md-12">
 				<div class="form-area">  
 					<form role="form" name="myForm" novalidate>
+						
 						<div class="form-group">
-							<input type="text" class="form-control" id="name" name="name" ng-model="name"  placeholder="Name" required>
+							<input type="button" class="form-control" value="Add More" ng-click="addMore();">
+							
+								
+							</span>
+						</div>
+
+						<div ng-repeat="st in dataset">
+						<div class="form-group">
+							<input type="text" class="form-control" id="name" name="name" ng-model="st.name"  placeholder="Name" required>
 							<span class="error" ng-show="myForm.name.$dirty && myForm.name.$invalid">
 								<span ng-show="myForm.name.$error.required">Name is required.</span>
 							</span>
 						</div>
 						<div class="form-group">
-							<input type="email" class="form-control" id="email" name="email" ng-model="email" placeholder="Email Id" required>
+							<input type="email" class="form-control" id="email" name="email" ng-model="st.email" placeholder="Email Id" required>
 							<span class="error" ng-show="myForm.email.$dirty && myForm.email.$invalid">
 								<span ng-show="myForm.email.$error.required">Email is required.</span>
 								<span ng-show="myForm.email.$error.email">Invalid email address.</span>
 							</span>
 						</div>
+
+						<div class="form-group">
+							<a ng-click="remove($index)">Remove</a>
+						</div>
+						</div>
+
 						<div class="form-group">
 							<input type="text" class="form-control" id="mobile" name="mobile" ng-model="mobile" placeholder="Mobile Number" ng-minlength="10" ng-maxlength="10" required>
 							<span class="error" ng-show="myForm.mobile.$dirty && myForm.mobile.$invalid">
@@ -39,7 +54,20 @@
 							<span ng-show="myForm.subject.$error.required">Subject is required.</span>
 						</span>
 					</div>
+
+
 					<div class="form-group">
+						<select ng-model="city" class="form-control">
+							<option ng-value="1">1</option>
+							<option ng-value="2">2</option>
+							<option ng-value="3">3</option>
+							<option ng-value="4">4</option>
+						</select>
+						
+					</div>
+					
+
+					<div class="form-group" ng-if="city == '2'">
 						<textarea class="form-control" type="textarea" name="message" id="message" ng-model="message" placeholder="Message" ng-minlength="10" ng-maxlength="500" rows="7"></textarea>
 						<span class="error" ng-show="myForm.message.$dirty && myForm.message.$invalid">
 							<span ng-show="myForm.message.$error.required">Message is required.</span>

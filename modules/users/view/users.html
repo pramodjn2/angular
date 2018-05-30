@@ -21,6 +21,7 @@
            <td>Last name</td>
            <td>Email</td>
            <td>Mobile</td>
+            <td>Action</td>
          </tr>
        </thead>
        <tbody>
@@ -31,6 +32,7 @@
           <td>{{ x.lname }}</td>
           <td>{{ x.email }}</td>
           <td>{{ x.mobile }}</td>
+          <td><a ng-href="user-edit/{{ x.id }}">Edit</a></td>
         </tr>
 
         <dir-pagination-controls max-size="500" direction-links="true" boundary-links="true" >

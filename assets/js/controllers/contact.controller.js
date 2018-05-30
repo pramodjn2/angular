@@ -4,10 +4,18 @@ app.controller('ContactController', function ($scope, $http) {
     $scope.errorMessage;
     $scope.success = false;
     $scope.error = true;
-
+  $scope.city = 3;
     /* sign in function */
-    $scope.contact = function(){
+    $scope.dataset = [{name : "",email : ""}];
+    $scope.addMore = function(){
+      $scope.dataset.push({name : "",email : ""});
+    }
 
+    $scope.remove = function(index){
+      $scope.dataset.splice(index,1);
+    }
+    $scope.contact = function(){
+      console.log($scope.dataset); return false;
       $scope.successMessage;
       $scope.errorMessage;
       $scope.success = false;
